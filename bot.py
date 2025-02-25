@@ -1,27 +1,9 @@
 import discord
-import os
-from dotenv import load_dotenv
 
-# Load environment variables
-load_dotenv()
-
-
-# Print environment variables using os.environ (this is a deeper check)
-print(f"🔍 DEBUG (os.environ): {os.environ}")
-print(f"🔍 DEBUG: DISCORD_BOT_TOKEN: {os.getenv('DISCORD_BOT_TOKEN')}")
-print(f"🔍 DEBUG: MENTION_LOG_CHANNEL_ID: {os.getenv('MENTION_LOG_CHANNEL_ID')}")
-print(f"🔍 DEBUG: USER_TO_TRACK_ID: {os.getenv('USER_TO_TRACK_ID')}")
-
-TOKEN = os.getenv("DISCORD_BOT_TOKEN")
-MENTION_LOG_CHANNEL_ID = os.getenv("MENTION_LOG_CHANNEL_ID")
-USER_TO_TRACK_ID = os.getenv("USER_TO_TRACK_ID")
-
-if not TOKEN or not MENTION_LOG_CHANNEL_ID or not USER_TO_TRACK_ID:
-    print("❌ ERROR: One or more environment variables are missing.")
-    exit(1)
-
-MENTION_LOG_CHANNEL_ID = int(MENTION_LOG_CHANNEL_ID)  # Convert to integer
-USER_TO_TRACK_ID = int(USER_TO_TRACK_ID)  # Convert to integer
+# 🔧 Hardcoded Configuration
+TOKEN = "MTM0Mzg5MzY2MzIyMjA3MTI5Nw.G3fvOH.2tGxc7Jb4MXWvbIj5WIrXuoyhfeAd5EZ1wqsvI"
+MENTION_LOG_CHANNEL_ID = 1343895740631748708  # Private logging channel ID
+USER_TO_TRACK_ID = 804522475672698890  # Your Discord user ID
 
 # Enable intents
 intents = discord.Intents.default()
