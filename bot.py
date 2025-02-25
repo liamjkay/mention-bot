@@ -5,7 +5,9 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-# Debug print to check if Railway is reading the variables
+
+# Print environment variables using os.environ (this is a deeper check)
+print(f"🔍 DEBUG (os.environ): {os.environ}")
 print(f"🔍 DEBUG: DISCORD_BOT_TOKEN: {os.getenv('DISCORD_BOT_TOKEN')}")
 print(f"🔍 DEBUG: MENTION_LOG_CHANNEL_ID: {os.getenv('MENTION_LOG_CHANNEL_ID')}")
 print(f"🔍 DEBUG: USER_TO_TRACK_ID: {os.getenv('USER_TO_TRACK_ID')}")
