@@ -5,9 +5,14 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+# Debug print to check if Railway is reading the variables
+print(f"🔍 DEBUG: DISCORD_BOT_TOKEN: {os.getenv('DISCORD_BOT_TOKEN')}")
+print(f"🔍 DEBUG: MENTION_LOG_CHANNEL_ID: {os.getenv('MENTION_LOG_CHANNEL_ID')}")
+print(f"🔍 DEBUG: USER_TO_TRACK_ID: {os.getenv('USER_TO_TRACK_ID')}")
+
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 MENTION_LOG_CHANNEL_ID = os.getenv("MENTION_LOG_CHANNEL_ID")
-USER_TO_TRACK_ID = os.getenv("USER_TO_TRACK_ID")  # Your Discord user ID
+USER_TO_TRACK_ID = os.getenv("USER_TO_TRACK_ID")
 
 if not TOKEN or not MENTION_LOG_CHANNEL_ID or not USER_TO_TRACK_ID:
     print("❌ ERROR: One or more environment variables are missing.")
