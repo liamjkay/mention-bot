@@ -1,9 +1,19 @@
 import discord
+import os
 
-# 🔧 Hardcoded Configuration
-TOKEN = "MTM0Mzg5MzY2MzIyMjA3MTI5Nw.G3fvOH.2tGxc7Jb4MXWvbIj5WIrXuoyhfeAd5EZ1wqsvI"
-MENTION_LOG_CHANNEL_ID = 1343895740631748708  # Private logging channel ID
-USER_TO_TRACK_ID = 804522475672698890  # Your Discord user ID
+# ✅ Load environment variables (set in Railway)
+TOKEN = os.environ.get("DISCORD_BOT_TOKEN")
+MENTION_LOG_CHANNEL_ID = os.environ.get("MENTION_LOG_CHANNEL_ID")
+USER_TO_TRACK_ID = os.environ.get("USER_TO_TRACK_ID")
+
+# ✅ Ensure all required variables are set
+if not TOKEN or not MENTION_LOG_CHANNEL_ID or not USER_TO_TRACK_ID:
+    print("❌ ERROR: Missing required environment variables!")
+    exit(1)
+
+# Convert channel and user ID to integers
+MENTION_LOG_CHANNEL_ID = int(MENTION_LOG_CHANNEL_ID)
+USER_TO_TRACK_ID = int(USER_TO_TRACK_ID)
 
 # Enable intents
 intents = discord.Intents.default()
@@ -25,7 +35,7 @@ async def on_message(message):
 
     # Check if the tracked user is mentioned
     if any(mention.id == USER_TO_TRACK_ID for mention in message.mentions):
-        print("🔔 Tracked user was mentioned!")  # Debug log
+        print("🔔 Tracked user was mentioned!")
 
         log_channel = bot.get_channel(MENTION_LOG_CHANNEL_ID)
         if log_channel:
